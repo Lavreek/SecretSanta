@@ -1,5 +1,3 @@
-### Build Asset Map
-make up-assets
+# Secret Santa / Секретный санта
 
-### Mailer
-php bin/console messenger:consume async
+> Спасибо, что уделяете своё внимание данному проекту.
