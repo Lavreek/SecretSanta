@@ -1,0 +1,36 @@
+networks:
+  secret_santa_network:
+    name: secret_santa_network
+    driver: bridge
+
+services:
+  host:
+    image: nginx:latest
+    volumes:
+      - ../../:/var/www/html
+      - ./host/default.conf:/etc/nginx/conf.d/default.conf
+      - ./host/ssl:/etc/nginx/ssl
+    networks:
+      - secret_santa_network
+    ports:
+      - "80:80"
+      - "443:443"
+
+  php:
+    image: secret-santa-php:1.0.0
+    volumes:
+      - ../../:/var/www/html
+    networks:
+      - secret_santa_network
+
+  database:
+    image: postgres:17-alpine
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    networks:
+      - secret_santa_network
+    ports:
+      - "5432:5432"

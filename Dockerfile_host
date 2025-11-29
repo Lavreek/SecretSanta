@@ -1,4 +1,0 @@
-FROM nginx
-
-ADD ./etc/nginx/default.conf /etc/nginx/conf.d/
-COPY ./etc/nginx/ssl /etc/nginx/ssl
