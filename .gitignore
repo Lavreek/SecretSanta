@@ -1,6 +1,7 @@
 
 ###> lavreek/SecretSanta ###
 /.idea
+/composer.lock
 ###< lavreek/SecretSanta ###
 
 ###> symfony/framework-bundle ###
